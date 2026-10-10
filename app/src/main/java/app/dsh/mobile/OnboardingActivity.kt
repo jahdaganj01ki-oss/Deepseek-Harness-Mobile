@@ -56,6 +56,7 @@ class OnboardingActivity : Activity() {
             findViewById<LinearLayout>(R.id.cardLangSystem) to "system",
             findViewById<LinearLayout>(R.id.cardLangZh) to "zh",
             findViewById<LinearLayout>(R.id.cardLangEn) to "en",
+            findViewById<LinearLayout>(R.id.cardLangDe) to "de",
         )
         for ((card, code) in langCards) {
             card.setOnClickListener {

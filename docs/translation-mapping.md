@@ -1,9 +1,9 @@
-# Translation mapping (ZH → EN)
+# Translation mapping (ZH → EN → DE)
 
-Reference for the English localisation of DSH Mobile. The app now ships **English
+Reference for the localisation of DSH Mobile. The app ships **English
 as the default locale** (`res/values/strings.xml`) and keeps the original Chinese
-under `res/values-zh-rCN/`. The in-app language switcher
-(*Settings → Other → Language*) still offers `Follow system / 中文 / English`.
+under `res/values-zh-rCN/` and German under `res/values-de/`. The in-app language
+switcher (*Settings → Other → Language*) offers `Follow system / 中文 / English / Deutsch`.
 
 Guard rails live in `scripts/check-i18n.py`, run on every PR by
 `.github/workflows/i18n-check.yml`.
@@ -44,7 +44,9 @@ Guard rails live in `scripts/check-i18n.py`, run on every PR by
 Categories live in `assets/extensions/catalog.json` (English) and
 `catalog.zh-rCN.json` (Chinese); `ExtensionManager.loadCatalog()` picks the file
 from the active locale. `ExtensionStoreActivity.categoryColor()` matches **both**
-spellings so the accent colour survives a locale switch.
+spellings so the accent colour survives a locale switch. German reuses the
+English catalogue (`catalogAsset()` falls back to `catalog.json` for any
+non-`zh` locale).
 
 | zh | en |
 |---|---|
@@ -59,6 +61,7 @@ spellings so the accent colour survives a locale switch.
 | `status_idle` | Waiting to start | kept distinct from the `Stopped` state label |
 | `menu_priv` / `ob_priv_label` / `priv_pick_title` | Permission mode | one term across settings, onboarding and the dialog |
 | `lang_zh` | Chinese | the Chinese locale shows `中文` as its autonym |
+| `lang_de` | German | the German locale shows `Deutsch` as its autonym |
 | `state_on` / `state_off` | On / Off | new; replaces hardcoded 已开启/未开启 in `SettingsActivity` + `activity_settings.xml` |
 | `tts_test_text` | Text-to-speech test | new; the string handed to the system TTS engine |
 | `access_enabled_toast` | Screen tap (accessibility): On | new; replaces string concatenation with a full-width colon |
@@ -73,7 +76,10 @@ by their on-screen text**, so it had to move with the UI:
 - error fingerprints `扩展目录发布失败…` → `Extension publish failed`
 - `bins 缺失` → `missing bins`
 
-`SEED_VERSION` was bumped 9 → 10 so existing installs pick up the reworded seed.
+The seed is English-only. When the UI is in English or German, the agent's
+English label references still work (German "Einstellungen → Engine neu starten"
+is not yet added to the seed). `SEED_VERSION` was bumped 9 → 10 so existing installs
+pick up the reworded seed.
 
 ## Not translated on purpose
 
@@ -82,3 +88,42 @@ developer documentation, never rendered in the UI. `scripts/check-i18n.py`
 therefore strips comments before scanning for string literals, and its only
 allow-listed CJK literals are the two zh catalogue category keys in
 `ExtensionStoreActivity`.
+
+The agent-facing seed (`AgentContextSeed.kt`) is English-only by design; it
+gives the agent English label references that work across all locales.
+
+## German terminology (DE)
+
+| Key | English | German | Notes |
+|---|---|---|---|
+| app_name | DSH Mobile | DSH Mobile | product name, unchanged |
+| settings_title | Settings | Einstellungen | |
+| settings_back | Back | Zurück | |
+| settings_section_display | Display | Anzeige | |
+| settings_section_priv | Permissions | Berechtigungen | |
+| settings_section_other | Other | Sonstiges | |
+| settings_section_ext | Extensions | Erweiterungen | |
+| menu_priv / ob_priv_label / priv_pick_title | Permission mode | Berechtigungsmodus | one term across settings, onboarding and the dialog |
+| priv_normal | Normal | Normal | |
+| priv_shizuku | Shizuku | Shizuku | |
+| priv_root | Root | Root | |
+| menu_title | Settings | Einstellungen | |
+| btn_restart | Restart | Neu starten | |
+| btn_start_engine | Start engine | Engine starten | |
+| btn_back | ← Home | ← Startseite | |
+| menu_landscape | Landscape mode | Querformat | |
+| menu_hide_toolbar | Hide toolbar | Symbolleiste ausblenden | |
+| menu_scale | Page zoom | Seitenzoom | |
+| menu_accessibility | Screen tap (accessibility) | Bildschirmtipp (Barrierefreiheit) | |
+| lang_system | Follow system | System folgen | language option |
+| lang_zh | Chinese | Chinesisch | |
+| lang_en | English | Englisch | |
+| lang_de | German | Deutsch | |
+| state_on / state_off | On / Off | Ein / Aus | |
+| status_idle | Waiting to start | Warte auf Start | |
+| status_healthy | Engine ready | Engine bereit | |
+| status_safe_mode | Safe mode | Sicherheitsmodus | |
+| status_backoff | Process exited… | Prozess wurde beendet… | |
+| notif_title | DSH engine running | DSH-Engine läuft | |
+| notif_channel_engine | Agent Engine | Agent-Engine | |
+| notif_action_exit | Exit | Beenden | |

@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DSH Mobile</string>
+    <string name="notif_channel_engine">Agent-Engine</string>
+    <string name="notif_channel_engine_desc">Status der DeepSeek-Harness-Lokal-Engine</string>
+    <string name="notif_title">DSH-Engine läuft</string>
+    <string name="status_idle">Warte auf Start</string>
+    <string name="status_exiting">Wird beendet…</string>
+    <string name="status_installing">Runtime wird installiert…</string>
+    <string name="status_starting">Engine wird gestartet…</string>
+    <string name="status_healthy">Engine bereit · http://127.0.0.1:3080</string>
+    <string name="status_safe_mode">Sicherheitsmodus: Plugin-Konfigurationen wurden in Quarantäne genommen, Engine läuft mit leerer Konfiguration (Arbeitsbereiche und Sitzungen sind unberührt)</string>
+    <string name="status_backoff">Prozess wurde unerwartet beendet, Neustart in %1$d s (Versuch %2$d)</string>
+    <string name="status_backoff_hint">Engine wurde beendet: %1$s - Neustart in %2$d s (Versuch #%3$d)</string>
+    <string name="status_failed">Start fehlgeschlagen: %1$s</string>
+    <string name="btn_restart">Neu starten</string>
+    <string name="btn_start_engine">Engine starten</string>
+    <string name="btn_hide">Ausblenden</string>
+    <string name="btn_back">← Startseite</string>
+    <string name="status_preview">Vorschau · 127.0.0.1:%1$d</string>
+    <string name="menu_title">Einstellungen</string>
+    <string name="menu_landscape">Querformat</string>
+    <string name="menu_hide_toolbar">Symbolleiste ausblenden</string>
+    <string name="menu_scale">Seitenzoom</string>
+    <string name="scale_title">Seitenzoom</string>
+    <string name="menu_priv">Berechtigungsmodus</string>
+    <string name="menu_priv_title">Berechtigungsmodus</string>
+    <string name="menu_accessibility">Bildschirmtipp (Barrierefreiheit)</string>
+    <string name="accessibility_enable">Aktivieren Sie den „DSH-Bildschirmtipp“-Barrierefreiheitsdienst</string>
+    <string name="priv_normal">Normal</string>
+    <string name="priv_shizuku">Shizuku</string>
+    <string name="priv_root">Root</string>
+    <string name="notif_action_exit">Beenden</string>
+
+    <!-- Barrierefreiheitsdienst (simulierte Bildschirmtipps) -->
+    <string name="accessibility_label">DSH-Bildschirmtipp</string>
+    <string name="accessibility_desc">Ermöglicht DSH, Bildschirmtipps und Wischgesten zu simulieren (z. B. Automatisierung). Dieser Dienst gibt nur Gesten-Einschüchterungsfähigkeiten an und liest keine Bildschrinhalte.</string>
+    <string name="accessibility_hint">Barrierefreiheitsdienst ist deaktiviert — „Bildschirmtipp“ ist nicht verfügbar</string>
+
+    <!-- Erster Start: Onboarding -->
+    <string name="ob_title">Willkommen bei DSH Mobile</string>
+    <string name="ob_subtitle">Richten Sie dies beim ersten Start nach Ihren Wünschen ein — danach wird es nicht mehr angezeigt.</string>
+    <string name="ob_orientation_label">Standard-Ausrichtung</string>
+    <string name="ob_orientation_desc">Hochformat (Telefon) eignet sich für die Einhandsuche; Querformat (Desktop-Format) wechselt zum Desktop-Layout</string>
+    <string name="ob_orient_portrait">Hochformat (Telefon)</string>
+    <string name="ob_orient_landscape">Querformat (Desktop-Layout)</string>
+    <string name="ob_priv_label">Berechtigungsmodus</string>
+    <string name="ob_priv_desc">Bestimmt, wie weit die AI das System erreichen kann. Ändern Sie es jederzeit in den Einstellungen</string>
+    <string name="ob_priv_normal">Normal</string>
+    <string name="ob_priv_normal_desc">Läuft im Sandkasten — Sicherheit geht vor</string>
+    <string name="ob_priv_shizuku">Shizuku</string>
+    <string name="ob_priv_shizuku_desc">Die AI kann Befehle als adb ausführen (Keep-Alive/Prozesse beenden); die Engine selbst bleibt im Sandkasten</string>
+    <string name="ob_priv_root">Root</string>
+    <string name="ob_priv_root_desc">Die gesamte Engine startet als Root mit vollem Datenträgernzugriff (hohes Risiko)</string>
+    <string name="ob_cap_root_checking">Wird geprüft…</string>
+    <string name="ob_cap_root_present">✔ Root (su) erkannt</string>
+    <string name="ob_cap_root_absent">⚠ Root (su) nicht erkannt — Root-Modus kann die Engine nicht erhöhen</string>
+    <string name="ob_priv_root_gray_hint">Kein su gefunden, Root-Modus ist nicht verfügbar</string>
+    <string name="ob_cap_shizuku_present">✔ Shizuku gewährt</string>
+    <string name="ob_cap_shizuku_request">● Shizuku läuft, fordere Zugriff an… bitte tippen Sie auf „Zulassen“ im Dialog</string>
+    <string name="ob_cap_shizuku_absent">⚠ Shizuku läuft nicht — öffnen Sie zuerst die Shizuku-App und starten Sie deren Dienst</string>
+    <string name="ob_start">Loslegen</string>
+    <string name="ob_priv_root_warn_title">Hochrisiko-Bestätigung (1/2)</string>
+    <string name="ob_priv_root_warn">Root-Modus lässt die Engine als Root laufen. Es kann die aktuelle Laufzeitumgebung beschädigen und Sitzungs- oder Arbeitsbereichsdaten verlieren.\n\nFortfahren?</string>
+    <string name="ob_priv_root_warn2_title">Endgültige Bestätigung (2/2)</string>
+    <string name="ob_priv_root_warn2">Dieser Modus ist äußerst gefährlich — die Engine kann jede Datei außerhalb des Sandkastens lesen und schreiben.\n\nRoot-Modus aktivieren?</string>
+    <string name="ob_dialog_continue">Fortfahren</string>
+    <string name="ob_dialog_cancel">Abbrechen</string>
+
+    <!-- Einstellungen (eigenständige Seite, MIUI-ähnliche gruppierte Karten) -->
+    <string name="settings_title">Einstellungen</string>
+    <string name="settings_back">Zurück</string>
+    <string name="settings_section_display">Anzeige</string>
+    <string name="settings_section_priv">Berechtigungen</string>
+    <string name="settings_section_other">Sonstiges</string>
+
+    <string name="setting_landscape">Querformat</string>
+    <string name="setting_landscape_sub">Rendert in Desktop-Format und sperrt auf Querformat</string>
+    <string name="setting_orient_portrait">Hochformat</string>
+    <string name="setting_orient_landscape">Querformat</string>
+
+    <string name="setting_applies_on_return">wird wirksam beim Zurückkehren</string>
+    <string name="setting_scale">Seitenzoom</string>
+    <string name="setting_scale_sub">Passen Sie an, wie Webseiten skaliert werden (Browserzoom)</string>
+
+    <string name="setting_priv_mode">Berechtigungsmodus</string>
+    <string name="setting_priv_mode_sub">Bestimmt, wie weit die AI das System erreichen kann. Wechsel startet die Engine neu</string>
+    <string name="setting_root_status">Root-Fähigkeit</string>
+    <string name="setting_root_sub">Startet die Engine als su, damit die AI systemweite Rechte erhält (Gerät muss gerootet sein). Wechsel startet die Engine neu</string>
+    <string name="setting_root_status_yes">su erkannt</string>
+    <string name="setting_root_status_no">su nicht erkannt</string>
+    <string name="setting_shizuku_status">Shizuku-Status</string>
+    <string name="setting_shizuku_sub">Führt Befehle als adb über Shizuku aus (Keep-Alive/Prozesse beenden); die Engine selbst bleibt im Sandkasten</string>
+    <string name="setting_shizuku_granted">Erteilt</string>
+    <string name="setting_shizuku_request">Warte auf Berechtigung</string>
+    <string name="setting_shizuku_absent">Nicht gestartet</string>
+    <string name="setting_access">Bildschirmtipp (Barrierefreiheit)</string>
+    <string name="setting_access_sub_on">Aktiviert — Bildschirmtipps können simuliert werden</string>
+    <string name="setting_access_sub_off">Nicht aktiviert — tippen Sie hier, um es in den Systemeinstellungen zu aktivieren</string>
+
+    <string name="setting_restart_engine">Engine neu starten</string>
+    <string name="setting_restart_engine_sub">Runtime und Plugins neu laden (automatischer Selbstheilung nach Absturz)</string>
+    <string name="setting_about">Über</string>
+    <string name="setting_about_sub">DSH Mobile · Version %1$s</string>
+
+    <!-- Erweiterungszentrum (v1.2.0): rot = nicht heruntergeladen, gelb = heruntergeladen aber inaktiv, grün = aktiviert -->
+    <string name="settings_section_ext">Erweiterungen</string>
+    <string name="setting_plugin">Community-Plugins</string>
+    <string name="setting_plugin_sub">Ein-Klick-Installation von dsh-Ökosystem-Plugins</string>
+    <string name="plugin_center_title">Community-Plugins</string>
+    <string name="plugin_center_sub">Ein-Klick-Installation von dsh-Ökosystem-Plugins (npm)</string>
+    <string name="plugin_install">Installieren</string>
+    <string name="plugin_installing">Wird installiert…</string>
+    <string name="plugin_installed">Installiert</string>
+    <string name="plugin_failed">Fehlgeschlagen: %1$s</string>
+    <string name="plugin_empty">Noch keine kompatiblen Community-Plugins — sie erscheinen automatisch hier</string>
+    <string name="plugin_search_hint">Community-Plugins durchsuchen…</string>
+    <string name="plugin_searching">Suche auf npm…</string>
+    <string name="plugin_search_none">Keine passenden Plugins auf npm</string>
+    <string name="plugin_search_fail">npm-Suche fehlgeschlagen — zeige lokal verfügbare Auswahl</string>
+    <string name="plugin_search_clear">Löschen</string>
+    <string name="plugin_search_btn">Suchen</string>    <string name="plugin_manual_title">Manuelle Installation</string>
+    <string name="plugin_catalog_title">Katalog</string>
+    <string name="setting_ext">Erweiterungszentrum</string>
+    <string name="setting_ext_sub">Laden Sie Python, Git, JDK und andere Umgebungen herunter — aktivierte werden in die Engine integriert</string>
+    <string name="setting_ext_active_count">%1$d aktiviert</string>
+    <string name="ext_title">Erweiterungszentrum</string>
+    <string name="ext_subtitle">%1$s Gerät · %2$d von %3$d aktiviert</string>
+    <string name="ext_state_none">Nicht heruntergeladen</string>
+    <string name="ext_state_downloaded">Heruntergeladen · nicht aktiviert</string>
+    <string name="ext_state_activated">Aktiviert</string>
+    <string name="ext_action_download">Herunterladen</string>
+    <string name="ext_action_activate">Aktivieren</string>
+    <string name="ext_action_deactivate">Deaktivieren</string>
+    <string name="ext_activate_toast">Aktiviert · Engine neu starten, um anzuwenden</string>
+    <string name="ext_deactivate_toast">Deaktiviert · Engine neu starten, um anzuwenden</string>
+    <string name="ext_download_failed">Download fehlgeschlagen: %1$s</string>
+    <string name="ext_download_start">Lade %1$s herunter …</string>
+    <string name="ext_uninstall_title">Erweiterung deinstallieren</string>
+    <string name="ext_uninstall_msg">%1$s und alle zugehörigen Statusmarker entfernen? Wenn die Engine diese Umgebung verwendet, wird sie automatisch neu gestartet.</string>
+    <string name="ext_dialog_uninstall">Deinstallieren</string>
+    <string name="ext_reinstall_title">Erweiterung neu installieren</string>
+    <string name="ext_reinstall_msg">%1$s (%2$s) wird erneut heruntergeladen und überschrieben.\n\nVerwenden Sie dies, wenn das Payload fehlt oder die Installation unvollständig ist: Es wird erneut heruntergeladen und der vorhandene Inhalt gelöscht und neu aufgebaut.</string>
+    <string name="ext_dialog_reinstall">Neu installieren</string>
+    <string name="ext_reinstall_start">Installiere %1$s neu …</string>
+    <string name="ext_more_cd">Weitere Aktionen</string>
+    <string name="ext_tool_check">Alle prüfen</string>
+    <string name="ext_tool_install_all">Alle installieren</string>
+    <string name="ext_tool_repair">Reparieren</string>
+    <string name="ext_check_title">Erweiterungsgesundheitsprüfung</string>
+    <string name="ext_check_all_ok">%1$d Erweiterung(en) installiert, alle gesund ✓</string>
+    <string name="ext_check_summary">%1$d installiert: %2$d gesund, %3$d defekt
+
+%4$s</string>
+    <string name="ext_check_none">Noch keine Erweiterungen installiert</string>
+    <string name="ext_install_all_title">Alle Erweiterungen installieren</string>
+    <string name="ext_install_all_msg">Dies lädt und installiert %1$d Erweiterung(en), die noch nicht installiert sind (einschließlich ihrer Abhängigkeitsschlüsse; die Gesamtgröße hängt von der Erweiterung ab.
+
+Installation läuft im Hintergrund — Sie können diese Seite verlassen. Neue Erweiterungen gelangen nach einem Engine-Neustart in den PATH.</string>
+    <string name="ext_install_all_go">Installation starten</string>
+    <string name="ext_install_all_none">Nichts zu installieren — alles ist bereits installiert</string>
+    <string name="ext_install_all_started">%1$d Erweiterung(en) in Warteschlange; lädt im Hintergrund herunter</string>
+    <string name="ext_repair_title">Defekte Erweiterungen reparieren</string>
+    <string name="ext_repair_msg">%1$d defekte Erweiterung(en) gefunden:
+
+%2$s
+
+Sie werden erneut heruntergeladen und neu installiert (mit Abhängigkeitsschließungen). Wenn ein „Berechtigungsrest“-Fehler auftritt, gewähren Sie einmal su und wiederholen Sie den Vorgang.</string>
+    <string name="ext_repair_go">Reparieren</string>
+    <string name="ext_repair_none">Keine defekten Erweiterungen erkannt ✓</string>
+    <string name="ext_repair_started">%1$d Erweiterung(en) zur Reparatur in Warteschlange</string>
+    <string name="ext_checking">Wird geprüft…</string>
+    <string name="engine_restarting">Engine wird neu gestartet…</string>
+
+    <!-- Berechtigungsmodus-Dialog: Suffix und ausgegraute Erklärung für nicht verfügbare Einträge -->
+    <string name="priv_pick_title">Berechtigungsmodus</string>
+    <string name="priv_gray_hint">Derzeit nicht verfügbar (Fähigkeit noch nicht bereit)</string>
+
+    <!-- Über -->
+    <string name="about_title">Über</string>
+    <string name="about_app_name">DSH Mobile</string>
+    <string name="about_version">Version %1$s</string>
+    <string name="about_intro">DSH Mobile ist eine lokale Engine-Shell für DeepSeek Harness (DSH) auf Android: Sie führt die vollständige Node.js-Agent-Engine im Startbereich des Telefons aus — kein Server erforderlich, und keine Daten verlassen jemals das Gerät.</string>
+    <string name="about_based">Erstellt auf der DeepSeek-Harness (dsh) Agent-Framework, Open-Source von DeepSeek im August 2026</string>
+    <string name="about_author">Autor: Soodok</string>
+    <string name="about_open_source">Quellcode</string>
+    <string name="about_repo">github.com/Soodok/Deepseek-Harness-Local-Android</string>
+    <string name="about_copied">Repository-URL kopiert</string>
+    <string name="about_check_update">Auf Updates prüfen</string>
+    <string name="about_update_idle">Tippen Sie hier, um GitHub Releases zu prüfen</string>
+    <string name="about_update_checking">Wird geprüft…</string>
+    <string name="about_update_available">Neue Version %1$s verfügbar · tippen Sie hier, um zu öffnen</string>
+    <string name="about_update_latest">Bereits auf der neuesten Version</string>
+    <string name="about_update_failed">Prüfung fehlgeschlagen: %1$s</string>
+    <string name="about_privacy_note">Datenschutz: Engine, Sitzungen und Anmeldeinformationen bleiben auf diesem Gerät. Die optionalen Cloud-ASR/TTS-Endpunkte sind selbst gehostet, werden nur zur Sprachumwandlung verwendet und enthalten keinerlei Analyse- oder Trackingfunktionen.</string>
+    <string name="setting_access_open_failed">Konnte die Barrierefreiheitseinstellungen nicht öffnen</string>
+    <string name="ext_repo_line">Termux-Repository · %1$s</string>
+    <string name="ext_state_installing">Wird installiert…</string>
+    <string name="ext_state_pending_restart">Aktiviert · Engine neu starten, um anzuwenden</string>
+    <string name="ext_downloading_pct">%1$s · %2$d%% werden heruntergeladen</string>
+    <string name="ext_download_done">%1$s heruntergeladen — aktivieren Sie es unten</string>
+    <string name="ext_unknown_error">Unbekannter Fehler</string>
+    <string name="app_language">App-Sprache</string>
+    <string name="webview_gate_title">WebView muss aktualisiert werden</string>
+    <string name="webview_gate_body">Der Browser-Engine auf diesem Gerät (Chrome %1$s) ist zu alt für diese App: Die AI-Schnittstelle erfordert Chrome %2$d+ und kann auf Syntaxebene nicht kompensiert werden. Die Seite würde weiß erscheinen.
+
+Aktualisieren Sie Android System WebView aus Ihrem App-Shop, dann öffnen Sie diese App erneut.
+
+Sie können auch ohne Aktualisierung fortfahren, aber die Benutzeroberfläche wird nicht angezeigt.</string>
+    <string name="webview_gate_update">Wie man aktualisiert</string>
+    <string name="webview_gate_continue">Trotzdem fortfahren</string>
+    <string name="ticker_working">Verarbeite…</string>
+    <string name="setting_experimental">Experimentelle Funktionen</string>
+    <string name="setting_experimental_sub">Standardmäßig deaktiviert. Wenn aktiviert, werden folgende Einträge angezeigt: schwebendes Fenster, Mikrofonberechtigung, Sprachdienste, lokale Erkennungs-App.</string>
+    <string name="app_language_sub">Anzeigesprache der App-Benutzeroberfläche (die WebUI folgt dem System)</string>
+    <string name="app_language_sub_current">Anzeigesprache wechseln · aktuell: %1$s</string>
+    <string name="lang_system">System folgen</string>
+    <string name="lang_zh">Chinesisch</string>
+    <string name="lang_en">Englisch</string>
+    <string name="lang_de">Deutsch</string>
+    <string name="lang_changed">Sprache geändert</string>
+    <string name="ob_lang_label">Sprache / Language</string>
+    <string name="setting_storage">Alle Dateien zugreifen</string>
+    <string name="setting_storage_sub">Ermöglicht der AI, Dateien im gemeinsamen Speicher (Download/Dokumente) zu erstellen und zu lesen/schreiben</string>
+    <string name="storage_granted">Erteilt</string>
+    <string name="storage_denied">Nicht erteilt · tippen Sie, um zu aktivieren</string>
+    <string name="setting_tts">Text-zu-Sprache (TTS)</string>
+    <string name="setting_tts_sub">Der Agent sagt laut vor über die System-TTS-Engine · tippen Sie, um einen Test abzuspielen und den Engine-Status anzuzeigen</string>
+    <string name="tts_missing">Keine TTS-Engine auf dem Gerät</string>
+    <string name="tts_engines">Engines ×%1$d</string>
+    <string name="setting_notif">Benachrichtigungen</string>
+    <string name="setting_notif_sub">Aufgabenabschluss-Benachrichtigung (Android 13+)</string>
+    <string name="notif_granted">Erteilt</string>
+    <string name="notif_denied">Nicht erteilt · tippen Sie, um zu aktivieren</string>
+
+    <!-- Allgemeine Ein/Aus-Werbebeschriftungen für Einstellungszeilen -->
+    <string name="state_on">Ein</string>
+    <string name="state_off">Aus</string>
+    <!-- Text, der an die System-TTS-Engine übergeben wird, wenn der Benutzer auf die TTS-Zeile tippt -->
+    <string name="tts_test_text">Text-zu-Sprache-Test</string>
+    <string name="access_enabled_toast">Bildschirmtipp (Barrierefreiheit): Aktiviert</string>
+    <string name="error_restart_failed_streak">%1$d-mal hintereinander fehlgeschlagen — automatische Neustarts gestoppt</string>
+    <string name="error_root_no_su">Root-Modus ist ausgewählt, aber keine verwendbare su-Binary gefunden (das Gerät ist möglicherweise nicht gerootet)</string>
+    <string name="error_shizuku_binder">Shizuku-Binder nicht verfügbar (Server läuft nicht oder ist nicht gewährt)</string>
+    <string name="error_runtime_no_source">Weder assets/runtime.zip noch eine Download-URL ist konfiguriert</string>
+    <string name="error_runtime_no_space">Nicht genug freier Speicher für die Installation der Runtime: ca. %1$s MB benötigt, nur %2$s MB verfügbar. Speicher freigeben und erneut versuchen.</string>
+    <string name="bridge_down_title">Fähigkeitsbrücke konnte nicht gestartet werden</string>
+    <string name="bridge_down_body">Port %1$d ist bereits in Gebrauch (Inhaber: %2$s). Benachrichtigung / Bildschirmsteuerung sind nicht verfügbar, bis die App neu gestartet wird.</string>
+    <string name="notif_agent_task">Agent-Aufgabe</string>
+    <string name="notif_task_complete">Aufgabe abgeschlossen</string>
+    <string name="notif_channel_agent">Agent-Aufgaben-Benachrichtigungen</string>
+    <string name="notif_ext_installed_title">Erweiterung installiert</string>
+    <string name="notif_ext_installed_body">%1$s ist aktiviert — starten Sie die Engine neu, um sie zu verwenden</string>
+    <string name="notif_ext_failed_title">Erweiterungsinstallation fehlgeschlagen</string>
+    <string name="notif_agent_prefix">Agent · %1$s: %2$s</string>
+    <string name="notif_turn_done_title">Unterhaltung abgeschlossen</string>
+    <string name="notif_turn_done_body">Die AI hat ihre Antwort abgeschlossen (Sitzung %1$s…)</string>
+    <string name="overlay_idle">Leerlauf</string>
+    <string name="overlay_working">Verarbeite · %1$s</string>
+    <string name="overlay_turn_done">Unterhaltung abgeschlossen</string>
+    <string name="a11y_voice_input">Spracheingabe</string>
+    <string name="overlay_listening">Höre zu…</string>
+    <string name="overlay_speak_now">Sprich jetzt</string>
+    <string name="voice_close">Schließen</string>
+    <string name="voice_hint_placeholder">Erkannter Text (bearbeitbar)</string>
+    <string name="voice_retry">Nochmal sprechen</string>
+    <string name="voice_send">Senden</string>
+    <string name="voice_sent">Gesendet</string>
+    <string name="voice_sent_to">Gesendet an: %1$s</string>
+    <string name="voice_not_sent">Nicht gesendet — der Text ist noch in der Eingabeaufforderung</string>
+        <string name="voice_cloud_listening">Cloud-ASR wird ausgeführt…</string>
+    <string name="voice_switching_cloud">Wechsle zu Cloud-ASR…</string>
+    <string name="setting_cloud_asr">Cloud-Spracherkennung</string>
+    <string name="setting_cloud_asr_sub">Wird verwendet, wenn das Gerät keinen integrierten Erkenner hat</string>
+    <string name="cloud_asr_title">Cloud-Spracherkennung</string>
+    <string name="cloud_asr_desc">Wird nur verwendet, wenn das Gerät keinen integrierten Erkenner hat. Audio wird für die Transkription hochgeladen.</string>
+    <string name="cloud_asr_key">API-Schlüssel</string>
+    <string name="cloud_asr_key_hint">Fügen Sie hier Ihren API-Schlüssel ein</string>
+    <string name="cloud_asr_endpoint">Endpunkt</string>
+    <string name="cloud_asr_model">Modell</string>
+        <string name="cloud_asr_save">Speichern</string>
+        <string name="tts_voice_xiaoxiao">Xiaoxiao · weiblich (empfohlen)</string>
+    <string name="tts_voice_yunxi">Yunxi · männlich</string>
+    <string name="tts_voice_xiaoyi">Xiaoyi · weiblich</string>
+    <string name="tts_voice_yunjian">Yunjian · männlich (ruhig)</string>
+            <string name="asrapp_title">Spracherkennungs-App</string>
+    <string name="asrapp_subtitle">Installieren Sie unsere Offline-Erkennungs-App, dann folgen Sie den Schritten unten, um ein Modell herunterzuladen und zu aktivieren.</string>
+    <string name="asrapp_open_failed">Kann nicht geöffnet werden: %1$s</string>
+
+    <!-- Hauptkarte: unsere Erkennungsservice -->
+    <string name="asrapp_ours">DSH-Offline-Erkennung</string>
+    <string name="asrapp_ours_desc">System-Level-Erkennungsservice. Lokale Inferenz via sherpa-onnx, Modelle von einem in China erreichbaren Spiegel. Kein Desktop-Symbol — öffnen Sie es von hier aus.</string>
+    <string name="asrapp_download">Von GitHub Releases herunterladen</string>
+    <string name="asrapp_installed_open">Installiert — tippen Sie hier, um zu öffnen</string>
+
+    <!-- Anleitung: Vier Schritte -->
+    <string name="asrapp_guide_title">Einrichtungsanleitung</string>
+    <string name="asrapp_step1_title">1. APK herunterladen</string>
+    <string name="asrapp_step1_body">Tippen Sie auf die Karte oben, um die GitHub Releases-Seite in Ihrem Browser zu öffnen, dann laden Sie die neueste dsh-asr-service arm64-v8a APK herunter (ca. 31 MB). Installieren Sie sie und erlauben Sie die Installation von Ihrer Browser-App, wenn Sie dazu aufgefordert werden. Es wird kein Symbol auf Ihrem Startbildschirm angezeigt.</string>
+    <string name="asrapp_step2_title">2. Öffnen und ein Modell herunterladen</string>
+    <string name="asrapp_step2_body">Öffnen Sie es von dieser Seite (die Karte oben) oder über die System-Einstellungen für Spracheingabe. Gehen Sie zu Modellen und laden Sie ein Modell herunter. zipformer-zh-14m-int8 ist klein und schnell — gute Wahl zum Starten. Wählen Sie paraformer-zh-int8, wenn Sie bessere Genauigkeit wünschen und genügend Platz haben. Modelle bleiben auf Ihrem Gerät; die Download-Quelle folgt der Systemsprache (offizieller HuggingFace für Englisch, ein in China erreichbarer Spiegel für Chinesisch) und kann in den App-Einstellungen überschrieben werden.</string>
+    <string name="asrapp_step3_title">3. Als Systemerkennungsservice festlegen</string>
+    <string name="asrapp_step3_body">Tippen Sie in der App auf „Als Standard festlegen“. Dies erfordert Shizuku oder Root; ohne beides gehen Sie zu „Einstellungen → Sprache und Eingabe → Spracheingabe“ und wählen Sie die App dort. Auf ROMs, die diese Seite umleiten, können Sie sie auch direkt hier in DSH Mobile auswählen (siehe die Erkennungs-Engine-Einstellung unten).</string>
+    <string name="asrapp_step4_title">4. In DSH Mobile aktivieren</string>
+    <string name="asrapp_step4_body">Gehen Sie zurück zu „Sprachdienste → Spracherkennung“ und setzen Sie die Erkennungs-Engine auf die DSH-Offline-Erkennung. Danach tippen Sie auf das schwebende Mikrofon: Die Erkennung läuft nun vollständig offline ab. Jederzeit können Sie in der Erkennungs-App auf „Erkennung starten“ tippen, um jeden Schritt zu verifizieren.</string>
+
+    <string name="asrapp_trouble_title">Was tun, wenn etwas nicht funktioniert</string>
+    <string name="asrapp_trouble_body">Kein Symbol nach der Installation: erwartungsgemäß — es ist ein Dienst-Plugin, öffnen Sie es von dieser Seite. Modell-Download schlägt fehl: Netzwerk prüfen; in englischer Umgebung läuft huggingface.co, in chinesischer Umgebung läuft hf-mirror.com, auch in den App-Einstellungen kann der Quellcode gewechselt werden. Spracheingabe verwendet immer noch den falschen Motor: manuell unter „Erkennungs-Engine“ festlegen. Erkennung liefert keine Ergebnisse: einmal „Erkennung starten“ in der App ausführen, es zeigt, welcher Schritt fehlt.</string>
+
+    <string name="asrapp_repo_title">Projektseite</string>
+    <string name="asrapp_repo_desc">Quellcode, andere ABIs und Versionshinweise.</string>
+
+<string name="asrapp_entry">Lokale Erkennungs-Apps</string>
+    <string name="asrapp_entry_sub">Installieren Sie unseren Offline-Spracherkennungs-Service für das System</string>
+    <string name="asr_help_title">Warum ein Sprachdienst?</string>
+    <string name="asr_help_body_1">Warum muss das konfiguriert werden?</string>
+    <string name="asr_help_body_2">Android benötigt Speech-to-Text, nur wenn auf dem Gerät eine Erkennungs-App installiert ist. Viele Geräte (besonders chinesische ROMs) werden ohne eine geliefert, sodass die Spracheingabe sofort fehlschlägt.</string>
+    <string name="asr_help_body_3">Zwei Lösungsmöglichkeiten:</string>
+    <string name="asr_help_body_4">A) Installieren Sie eine lokale Erkennungs-App — sie registriert sich als Systemerkennungsdienst, und diese App verwendet sie automatisch. Nichts muss hier ausgefüllt werden. Empfohlen (alle deklarieren android.speech.RecognitionService):</string>
+    <string name="asr_help_body_5">  · Sayboard (Vosk) — github.com/ElishaAz/Sayboard
+    F-Droid, aktiv. Import vosk-model-cn-0.22 (~1,3 GB) für deutlich bessere Chinesisch-Unterstützung.</string>
+    <string name="asr_help_body_6">  · whisperIME — github.com/woheller69/whisperIME
+    F-Droid, aktiv. Mehrsprachiges Whisper (~435 MB), gute Chinesisch-Unterstützung.</string>
+    <string name="asr_help_body_7">  · whisperIMEplus — github.com/woheller69/whisperIMEplus
+    Schnelleres ONNX-Versions-Update, häufiger aktualisiert.</string>
+    <string name="asr_help_body_8">Nach der Installation gehen Sie zu „Systemeinstellungen → Sprache und Eingabe → Spracheingabe“ und wählen Sie sie.</string>
+    <string name="asr_help_body_9">B) Verwenden Sie einen Cloud-ASR-Dienst — geben Sie unten die OpenAI-kompatible Transkriptionsadresse, den Modellnamen und den API-Schlüssel ein. Dienste mit kostenlosem Kontingent: SiliconFlow (siliconflow.cn), Groq (groq.com), Alibaba DashScope, Zhipu BigModel, Volcengine Ark oder Ihr eigener Server (whisper.cpp).</string>
+    <string name="asr_help_body_10">Lassen Sie die Felder leer, um nur die Systemerkennung zu verwenden.</string>
+        
+    
+    <string name="voice_rate_label">Geschwindigkeit %1$s</string>
+    <string name="asr_engine_label">Erkennungs-Engine</string>
+    <string name="asr_engine_hint">Wählen Sie den Erkennungsservice direkt aus. Viele ROMs leiten die System-„Spracheingabe“-Einstellungsseite um, sodass das Plugin dort nicht ausgewählt werden kann, daher hier auswählen.</string>
+    <string name="asr_engine_system">Systemstandard</string>
+    <string name="asr_engine_plugin">DSH-Offline-Erkennung (Plugin)</string>
+    <string name="voice_service_title">Sprachdienste</string>
+    <string name="voice_service_asr">Spracherkennung</string>
+    <string name="voice_service_asr_desc">Systemerkennung priorisiert; bei Bedarf wird Ihre eigene API verwendet.</string>
+    <string name="voice_asr_free">Kostenlose API</string>
+    <string name="voice_asr_custom">Eigen-API</string>
+    <string name="voice_service_tts">Sprachsynthese</string>
+    <string name="voice_service_tts_desc">Microsoft Edge neuronale Stimmen, direkt von der App verbunden (kein Relay-Server).</string>
+    <string name="voice_tts_on">Edge-neuronale Stimme</string>
+    <string name="voice_tts_off">System-Engine</string>
+    <string name="setting_voice_service">Sprachdienste</string>
+    <string name="setting_voice_service_sub">Erkennung + Synthese, beides hier konfigurierbar</string>
+    <string name="tts_voice_xiaobei">Xiaobei · nordostchinesischer Dialekt</string>
+    <string name="tts_voice_xiaoni">Xiaoni · shaanxi Dialekt</string>
+    <string name="cloud_tts_title">Cloud-Sprachsynthese</string>
+    <string name="cloud_tts_desc">Neuronale Stimmen von Ihrem eigenen TTS-Server (edge-tts). Bei NichtErreichbarkeit automatischer Rückfall auf die System-Engine.</string>
+    <string name="cloud_tts_endpoint">Service-URL</string>
+    <string name="cloud_tts_endpoint_hint">http://ihr-server/tts</string>
+    <string name="cloud_tts_hint">Leer lassen, um weiterhin die System-TTS-Engine zu verwenden</string>
+    <string name="cloud_tts_token">Zugriffstoken</string>
+    <string name="cloud_tts_voice">Stimme</string>
+    <string name="cloud_tts_rate">Geschwindigkeit</string>
+    <string name="cloud_tts_clear">Löschen</string>
+    <string name="cloud_tts_test">Test</string>
+    <string name="cloud_tts_cleared">Cloud-TTS-Konfiguration und -Cache gelöscht</string>
+    <string name="cloud_tts_need_endpoint">Geben Sie zuerst die Service-URL ein</string>
+    <string name="setting_cloud_tts">Cloud-Sprachsynthese</string>
+    <string name="setting_cloud_tts_sub">Neuronale Stimmen, Rückfall auf System</string>
+    <string name="cloud_asr_saved">Gespeichert</string>
+    <string name="cloud_asr_clear">Schlüssel löschen</string>
+    <string name="cloud_asr_need_key">Geben Sie zuerst einen API-Schlüssel ein</string>
+    <string name="cloud_asr_free_hint">Dienstanbieter können Sie selbst wählen — tippen Sie auf das ? für eine Liste der Dienste mit kostenlosem Kontingent</string>
+    <string name="voice_need_permission">Mikrofonberechtigung erforderlich für Spracheingabe</string>
+    <string name="voice_no_service">keine Spracherkennung auf diesem Gerät — installieren Sie die Google-App oder geben Sie stattdessen ein</string>
+    <string name="voice_recognized">erkannt, sende</string>
+    <string name="overlay_tts_done">Unterhaltung abgeschlossen</string>
+    <string name="a11y_action_tap">Tippen</string>
+    <string name="a11y_action_input">Tippen</string>
+    <string name="a11y_action_swipe">Wischen</string>
+    <string name="a11y_action_key">Navigation</string>
+    <string name="a11y_action_screen">Bildschirm lesen</string>
+    <string name="error_engine_start">Engine-Start fehlgeschlagen: %1$s</string>
+
+    <string name="setting_asr">Spracherkennung</string>
+    <string name="setting_asr_sub">Offline-ASR-Modelle · bei Bedarf herunterladen</string>
+    <string name="asr_state_ready">Bereit</string>
+    <string name="asr_state_none">Nicht heruntergeladen</string>
+    <string name="voice_need_app">Öffnen Sie die App einmal, um Spracheingaben zu senden</string>
+    <string name="voice_need_app_hint">Sprachpanel ist überall verfügbar; das Senden erfordert, dass der Hauptbildschirm läuft</string>
+    <string name="setting_mic">Mikrofon</string>
+    <string name="setting_mic_sub">Spracheingabe (Spracherkennung) · tippen Sie, um zu erteilen</string>
+    <string name="mic_granted">Erteilt</string>
+    <string name="mic_denied">Nicht erteilt · tippen Sie, um zu aktivieren</string>
+        <string name="overlay_no_last_action">Noch keine Aktion aufgezeichnet</string>
+    <string name="overlay_last_action_at">Letzte Aktion: %1$s</string>
+    <string name="overlay_no_sessions">Keine aktiven Sitzungen</string>
+    <string name="overlay_session_line">%1$s · %2$s</string>
+    <string name="voice_no_session">Keine Konversation zum Senden — öffnen Sie zuerst eine</string>
+    <string name="voice_opening_session">Öffne Konversation…</string>
+    <string name="voice_session_timeout">Konversation wurde nicht geöffnet, bitte erneut versuchen</string>
+    <string name="voice_send_failed">Senden fehlgeschlagen: %1$s</string>
+</resources>

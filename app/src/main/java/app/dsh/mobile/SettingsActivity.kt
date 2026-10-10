@@ -184,10 +184,11 @@ class SettingsActivity : Activity() {
         }
 
         // —— 其他：语言 Language（当前语言并入 sub 文案，避免右侧文字与说明连续）——
-        val langCodes = listOf("system", "zh", "en")
+        val langCodes = listOf("system", "zh", "en", "de")
         fun langLabel(code: String): String = when (code) {
             "zh" -> getString(R.string.lang_zh)
             "en" -> getString(R.string.lang_en)
+            "de" -> getString(R.string.lang_de)
             else -> getString(R.string.lang_system)
         }
         val langSub = findViewById<TextView>(R.id.appLanguageSub)
@@ -203,6 +204,7 @@ class SettingsActivity : Activity() {
                 getString(R.string.lang_system),
                 getString(R.string.lang_zh),
                 getString(R.string.lang_en),
+                getString(R.string.lang_de),
             )
             AlertDialog.Builder(this)
                 .setTitle(getString(R.string.app_language))
