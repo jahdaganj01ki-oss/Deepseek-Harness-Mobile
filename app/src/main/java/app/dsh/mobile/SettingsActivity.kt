@@ -34,7 +34,7 @@ import app.dsh.mobile.engine.TtsManager
  */
 class SettingsActivity : Activity() {
 
-    private var landscape = false
+    private var orientation = DshApp.DEFAULT_ORIENTATION
     private var pageScale = DEFAULT_PAGE_SCALE
 
     /** 当前打开的权限选择对话框（选完/切换中转时关闭） */
@@ -57,7 +57,7 @@ class SettingsActivity : Activity() {
         setContentView(R.layout.activity_settings)
 
         val prefs = getSharedPreferences(PREFS_UI, MODE_PRIVATE)
-        landscape = prefs.getBoolean(KEY_LANDSCAPE, false)
+        orientation = DshApp.readOrientation(this)
         pageScale = prefs.getInt(KEY_PAGE_SCALE, DEFAULT_PAGE_SCALE)
 
         rikka.shizuku.Shizuku.addRequestPermissionResultListener(shizukuPermListener)
@@ -252,11 +252,15 @@ class SettingsActivity : Activity() {
     /** 全量刷新：横屏值 + 缩放值 + 权限状态行 + 无障碍 */
     private fun refreshAll() {
         val prefs = getSharedPreferences(PREFS_UI, MODE_PRIVATE)
-        landscape = prefs.getBoolean(KEY_LANDSCAPE, false)
+        orientation = DshApp.readOrientation(this)
         pageScale = prefs.getInt(KEY_PAGE_SCALE, DEFAULT_PAGE_SCALE)
 
         findViewById<TextView>(R.id.valLandscape).text = getString(
-            if (landscape) R.string.setting_orient_landscape else R.string.setting_orient_portrait
+            when (orientation) {
+                DshApp.ORIENTATION_LANDSCAPE -> R.string.setting_orient_landscape
+                DshApp.ORIENTATION_AUTO -> R.string.setting_orient_auto
+                else -> R.string.setting_orient_portrait
+            }
         )
         findViewById<TextView>(R.id.valScale).text = "$pageScale%"
         findViewById<TextView>(R.id.valPriv).text = privLabel(Privilege.getMode(this))
@@ -391,24 +395,42 @@ class SettingsActivity : Activity() {
 
     // ================= 显示：横屏 =================
 
+    /** 横屏模式选择：弹出单选对话框，在 Portrait / Landscape / Auto 间切换 */
     private fun toggleLandscape() {
-        landscape = !landscape
-        getSharedPreferences(PREFS_UI, MODE_PRIVATE)
-            .edit().putBoolean(KEY_LANDSCAPE, landscape).apply()
-        // 这里【不能】设 requestedOrientation：它作用于设置页自身，会把本应锁竖屏的
-        // 设置页也转横。朝向由 MainActivity.onResume 检测偏好变化后 applyOrientation()
-        // 统一应用（返回主界面才生效）。
-        findViewById<TextView>(R.id.valLandscape).text = getString(
-            if (landscape) R.string.setting_orient_landscape else R.string.setting_orient_portrait
+        val options = DshApp.ORIENTATIONS
+        val labels = arrayOf(
+            getString(R.string.setting_orient_portrait),
+            getString(R.string.setting_orient_landscape),
+            getString(R.string.setting_orient_auto),
         )
-        Toast.makeText(
-            this,
-            getString(
-                if (landscape) R.string.setting_orient_landscape
-                else R.string.setting_orient_portrait
-            ) + " · " + getString(R.string.setting_applies_on_return),
-            Toast.LENGTH_SHORT,
-        ).show()
+        val current = options.indexOf(orientation)
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.setting_landscape))
+            .setSingleChoiceItems(labels, current) { dlg, which ->
+                orientation = options[which]
+                DshApp.writeOrientation(this, orientation)
+                findViewById<TextView>(R.id.valLandscape).text = getString(
+                    when (orientation) {
+                        DshApp.ORIENTATION_LANDSCAPE -> R.string.setting_orient_landscape
+                        DshApp.ORIENTATION_AUTO -> R.string.setting_orient_auto
+                        else -> R.string.setting_orient_portrait
+                    }
+                )
+                Toast.makeText(
+                    this,
+                    getString(
+                        when (orientation) {
+                            DshApp.ORIENTATION_LANDSCAPE -> R.string.setting_orient_landscape
+                            DshApp.ORIENTATION_AUTO -> R.string.setting_orient_auto
+                            else -> R.string.setting_orient_portrait
+                        }
+                    ) + " · " + getString(R.string.setting_applies_on_return),
+                    Toast.LENGTH_SHORT,
+                ).show()
+                dlg.dismiss()
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .showStyled()
     }
 
     // ================= 显示：页面缩放 =================
@@ -649,7 +671,6 @@ class SettingsActivity : Activity() {
         const val REQ_MIC = 4203
         const val PREFS_UI = DshApp.PREFS_UI
         const val KEY_PAGE_SCALE = "page_scale"
-        const val KEY_LANDSCAPE = "landscape"
         const val KEY_EXPERIMENTAL = DshApp.KEY_EXPERIMENTAL
 
         const val DEFAULT_PAGE_SCALE = 90

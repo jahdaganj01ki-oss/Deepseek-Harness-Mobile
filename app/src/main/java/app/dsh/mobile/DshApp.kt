@@ -51,6 +51,37 @@ class DshApp : Application() {
         /** 试验性功能开关（v1.2.95）：默认关闭，关闭时悬浮窗与相关设置入口都不出现 */
         const val KEY_EXPERIMENTAL = "experimental"
 
+        /** 横竖屏偏好（字符串："portrait"/"landscape"/"auto"） */
+        const val KEY_ORIENTATION = "orientation"
+
+        /** 旧版横屏偏好（布尔）：用于迁阶 */
+        const val KEY_LANDSCAPE_LEGACY = "landscape"
+
+        const val ORIENTATION_PORTRAIT = "portrait"
+        const val ORIENTATION_LANDSCAPE = "landscape"
+        const val ORIENTATION_AUTO = "auto"
+
+        const val DEFAULT_ORIENTATION = ORIENTATION_PORTRAIT
+
+        val ORIENTATIONS = listOf(ORIENTATION_PORTRAIT, ORIENTATION_LANDSCAPE, ORIENTATION_AUTO)
+
+        /** 读取横竖屏偏好（自动迁移旧版布尔键） */
+        fun readOrientation(context: android.content.Context): String {
+            val prefs = context.getSharedPreferences(PREFS_UI, android.content.Context.MODE_PRIVATE)
+            val stored = prefs.getString(KEY_ORIENTATION, null)
+            if (stored != null) return stored
+            val oldLandscape = prefs.getBoolean(KEY_LANDSCAPE_LEGACY, false)
+            val migrated = if (oldLandscape) ORIENTATION_LANDSCAPE else ORIENTATION_PORTRAIT
+            prefs.edit().putString(KEY_ORIENTATION, migrated).apply()
+            return migrated
+        }
+
+        /** 写入横竖屏偏好 */
+        fun writeOrientation(context: android.content.Context, value: String) {
+            context.getSharedPreferences(PREFS_UI, android.content.Context.MODE_PRIVATE)
+                .edit().putString(KEY_ORIENTATION, value).apply()
+        }
+
         /** 读取试验性开关（Activity/Service 通用；无 Context 依赖的静态读法） */
         fun experimentalOn(context: android.content.Context): Boolean =
             context.getSharedPreferences(PREFS_UI, android.content.Context.MODE_PRIVATE)

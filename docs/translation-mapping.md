@@ -112,6 +112,7 @@ gives the agent English label references that work across all locales.
 | btn_start_engine | Start engine | Engine starten | |
 | btn_back | ← Home | ← Startseite | |
 | menu_landscape | Landscape mode | Querformat | |
+| setting_orient_auto / ob_orient_auto | Auto | Auto | new; third option in orientation picker |
 | menu_hide_toolbar | Hide toolbar | Symbolleiste ausblenden | |
 | menu_scale | Page zoom | Seitenzoom | |
 | menu_accessibility | Screen tap (accessibility) | Bildschirmtipp (Barrierefreiheit) | |

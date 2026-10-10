@@ -196,6 +196,38 @@
                 android:layout_width="16dp"
                 android:layout_height="1dp" />
 
+            <!-- 自动演示卡 -->
+            <LinearLayout
+                android:id="@+id/cardAuto"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="12dp"
+                android:background="@drawable/bg_dialog_rounded"
+                android:clickable="true"
+                android:focusable="true">
+
+                <View
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:background="@drawable/bg_demo_auto" />
+
+                <TextView
+                    android:id="@+id/txtAuto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ob_orient_auto"
+                    android:textColor="#FF9CA3AF"
+                    android:textSize="13sp"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="16dp"
+                android:layout_height="1dp" />
+
             <!-- 横屏演示卡 -->
             <LinearLayout
                 android:id="@+id/cardLandscape"

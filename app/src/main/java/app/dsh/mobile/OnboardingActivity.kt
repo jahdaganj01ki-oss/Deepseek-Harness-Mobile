@@ -2,7 +2,6 @@ package app.dsh.mobile
 
 import android.app.Activity
 import android.app.AlertDialog
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -27,7 +26,7 @@ import app.dsh.mobile.engine.Privilege
  */
 class OnboardingActivity : Activity() {
 
-    private var selectedLandscape = false
+    private var selectedOrientation = DshApp.ORIENTATION_PORTRAIT
     private var selectedPriv = PrivMode.NORMAL
     private var selectedLang = "system"
 
@@ -69,12 +68,17 @@ class OnboardingActivity : Activity() {
         }
 
         findViewById<LinearLayout>(R.id.cardPortrait).setOnClickListener {
-            selectedLandscape = false
+            selectedOrientation = DshApp.ORIENTATION_PORTRAIT
+            selectedOrientationDone = true
+            updateSelectionUi()
+        }
+        findViewById<LinearLayout>(R.id.cardAuto).setOnClickListener {
+            selectedOrientation = DshApp.ORIENTATION_AUTO
             selectedOrientationDone = true
             updateSelectionUi()
         }
         findViewById<LinearLayout>(R.id.cardLandscape).setOnClickListener {
-            selectedLandscape = true
+            selectedOrientation = DshApp.ORIENTATION_LANDSCAPE
             selectedOrientationDone = true
             updateSelectionUi()
         }
@@ -190,15 +194,19 @@ class OnboardingActivity : Activity() {
     private fun updateSelectionUi() {
         // 方向卡片高亮（选中卡加描边边框色）
         val p = findViewById<LinearLayout>(R.id.cardPortrait)
+        val a = findViewById<LinearLayout>(R.id.cardAuto)
         val l = findViewById<LinearLayout>(R.id.cardLandscape)
         val txtP = findViewById<TextView>(R.id.txtPortrait)
+        val txtA = findViewById<TextView>(R.id.txtAuto)
         val txtL = findViewById<TextView>(R.id.txtLandscape)
         val highlight = 0xFF7DD3FC.toInt()
         val normal = 0xFF9CA3AF.toInt()
-        txtP.setTextColor(if (selectedLandscape) normal else highlight)
-        txtL.setTextColor(if (selectedLandscape) highlight else normal)
-        p.alpha = if (selectedLandscape) 0.6f else 1f
-        l.alpha = if (selectedLandscape) 1f else 0.6f
+        txtP.setTextColor(if (selectedOrientation == DshApp.ORIENTATION_PORTRAIT) highlight else normal)
+        txtA.setTextColor(if (selectedOrientation == DshApp.ORIENTATION_AUTO) highlight else normal)
+        txtL.setTextColor(if (selectedOrientation == DshApp.ORIENTATION_LANDSCAPE) highlight else normal)
+        p.alpha = if (selectedOrientation == DshApp.ORIENTATION_PORTRAIT) 1f else 0.6f
+        a.alpha = if (selectedOrientation == DshApp.ORIENTATION_AUTO) 1f else 0.6f
+        l.alpha = if (selectedOrientation == DshApp.ORIENTATION_LANDSCAPE) 1f else 0.6f
     }
 
     /** 用户点「开始使用」：Root 需双警告，其余直接落库并进主界面。
@@ -261,8 +269,7 @@ class OnboardingActivity : Activity() {
         // ⚠️ 这里【不能】设 requestedOrientation：本 Activity 紧接着 finish()，
         // 方向请求是异步派发给窗口的，会落在一个正在销毁的窗口上而被丢弃；
         // 而且旧实现只处理了横屏分支，选「竖屏」在这里根本不产生任何效果。
-        getSharedPreferences("dsh_ui", Context.MODE_PRIVATE)
-            .edit().putBoolean("landscape", selectedLandscape).apply()
+        DshApp.writeOrientation(this, selectedOrientation)
 
         startActivity(Intent(this, MainActivity::class.java))
         finish()

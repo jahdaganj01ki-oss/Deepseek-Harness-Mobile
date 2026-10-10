@@ -41,9 +41,10 @@
     <string name="ob_title">欢迎使用 DSH Mobile</string>
     <string name="ob_subtitle">首次启动先按您的喜好与环境初始化，之后不再打扰。</string>
     <string name="ob_orientation_label">默认显示方向</string>
-    <string name="ob_orientation_desc">竖屏（手机）适合单手浏览；横屏（电脑比例）自动切换桌面布局</string>
+    <string name="ob_orientation_desc">竖屏（手机）适合单手浏览；横屏（电脑比例）自动切换桌面布局；自动跟随设备方向</string>
     <string name="ob_orient_portrait">竖屏（手机）</string>
     <string name="ob_orient_landscape">横屏（电脑布局）</string>
+    <string name="ob_orient_auto">自动（跟随设备）</string>
     <string name="ob_priv_label">运行权限模式</string>
     <string name="ob_priv_desc">决定 AI 能触及的系统能力边界，可随时在设置中更改</string>
     <string name="ob_priv_normal">普通</string>
@@ -75,9 +76,10 @@
     <string name="settings_section_other">其他</string>
 
     <string name="setting_landscape">横屏模式</string>
-    <string name="setting_landscape_sub">开启后按电脑比例桌面渲染，自动锁横屏</string>
+    <string name="setting_landscape_sub">选择屏幕方向与渲染方式：竖屏锁竖屏、横屏渲染桌面版、自动跟随设备</string>
     <string name="setting_orient_portrait">竖屏</string>
     <string name="setting_orient_landscape">横屏</string>
+    <string name="setting_orient_auto">自动</string>
 
     <string name="setting_applies_on_return">返回主界面后生效</string>
     <string name="setting_scale">页面缩放</string>

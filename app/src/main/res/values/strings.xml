@@ -41,9 +41,10 @@
     <string name="ob_title">Welcome to DSH Mobile</string>
     <string name="ob_subtitle">Set things up to your liking on first launch — you won\'t see this again.</string>
     <string name="ob_orientation_label">Default orientation</string>
-    <string name="ob_orientation_desc">Portrait (phone) suits one-handed browsing; landscape (desktop ratio) switches to the desktop layout</string>
+    <string name="ob_orientation_desc">Portrait (phone) suits one-handed browsing; landscape (desktop ratio) switches to the desktop layout; auto follows the device sensor</string>
     <string name="ob_orient_portrait">Portrait (phone)</string>
     <string name="ob_orient_landscape">Landscape (desktop layout)</string>
+    <string name="ob_orient_auto">Auto (follows device)</string>
     <string name="ob_priv_label">Permission mode</string>
     <string name="ob_priv_desc">Sets how much of the system the AI can reach. Change it anytime in Settings</string>
     <string name="ob_priv_normal">Normal</string>
@@ -75,9 +76,10 @@
     <string name="settings_section_other">Other</string>
 
     <string name="setting_landscape">Landscape mode</string>
-    <string name="setting_landscape_sub">Renders at desktop proportions and locks to landscape</string>
+    <string name="setting_landscape_sub">Choose how the screen orients and renders — Portrait locks vertical, Landscape renders desktop layout, Auto follows the device sensor</string>
     <string name="setting_orient_portrait">Portrait</string>
     <string name="setting_orient_landscape">Landscape</string>
+    <string name="setting_orient_auto">Auto</string>
 
     <string name="setting_applies_on_return">applies when you go back</string>
     <string name="setting_scale">Page zoom</string>
