@@ -41,9 +41,10 @@
     <string name="ob_title">Willkommen bei DSH Mobile</string>
     <string name="ob_subtitle">Richten Sie dies beim ersten Start nach Ihren Wünschen ein — danach wird es nicht mehr angezeigt.</string>
     <string name="ob_orientation_label">Standard-Ausrichtung</string>
-    <string name="ob_orientation_desc">Hochformat (Telefon) eignet sich für die Einhandsuche; Querformat (Desktop-Format) wechselt zum Desktop-Layout</string>
+    <string name="ob_orientation_desc">Hochformat (Telefon) eignet sich für die Einhandsuche; Querformat (Desktop-Format) wechselt zum Desktop-Layout; Auto folgt dem Gerät-Sensor</string>
     <string name="ob_orient_portrait">Hochformat (Telefon)</string>
     <string name="ob_orient_landscape">Querformat (Desktop-Layout)</string>
+    <string name="ob_orient_auto">Auto (folgt Gerät)</string>
     <string name="ob_priv_label">Berechtigungsmodus</string>
     <string name="ob_priv_desc">Bestimmt, wie weit die AI das System erreichen kann. Ändern Sie es jederzeit in den Einstellungen</string>
     <string name="ob_priv_normal">Normal</string>
@@ -75,9 +76,10 @@
     <string name="settings_section_other">Sonstiges</string>
 
     <string name="setting_landscape">Querformat</string>
-    <string name="setting_landscape_sub">Rendert in Desktop-Format und sperrt auf Querformat</string>
+    <string name="setting_landscape_sub">Wählen Sie die Bildschirmausrichtung und -darstellung — Hochformat sperrt quer, Querformat rendert das Desktop-Layout, Auto folgt dem Gerät-Sensor</string>
     <string name="setting_orient_portrait">Hochformat</string>
     <string name="setting_orient_landscape">Querformat</string>
+    <string name="setting_orient_auto">Auto</string>
 
     <string name="setting_applies_on_return">wird wirksam beim Zurückkehren</string>
     <string name="setting_scale">Seitenzoom</string>
