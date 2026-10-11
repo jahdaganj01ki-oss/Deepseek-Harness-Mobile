@@ -410,6 +410,12 @@ object EngineConfig {
             |        name: danger-full-access
             |        description: Full file access without approval prompts.
             |
+            |# Re-enable the plugin-manager tool on the web surface. dsh-web-app's
+            |# bundle patch disables it (tools move behind agent presets on desktop),
+            |# but the Android app needs the agent to manage dsh plugins directly.
+            |- id: tool-plugin-manager
+            |  disabled: false
+            |
             |# Registers DSH_ANDROID_PRIV_MODE as a managed shell variable. The value
             |# cannot arrive by process inheritance: shell-env rebuilds the DSH_*
             |# namespace per shell call and injects only registered contributions.
