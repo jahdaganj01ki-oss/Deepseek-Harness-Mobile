@@ -424,6 +424,16 @@ object EngineConfig {
             |    # the device capabilities it is meant to have (found in review).
             |    - id: android-bridge-token
             |      name: ./android-plugins/bridge-token.mjs
+            |    # DSH_SHZ_PORT: the shz wrapper reads it to POST to the Shizuku
+            |    # bridge. Stripped by scrubbedParentEnv() without registration,
+            |    # so the agent cannot call the bridge directly without this.
+            |    - id: android-shz-port
+            |      name: ./android-plugins/shz-port.mjs
+            |    # DSH_PERMISSION_MODE: current permission preset (always
+            |    # danger-full-access on Android). Lets the agent verify the
+            |    # sandbox is in the expected state from its shell.
+            |    - id: android-permission-mode
+            |      name: ./android-plugins/permission-mode.mjs
             |""".trimMargin()
         runCatching {
             if (!f.isFile || f.readText() != body) f.writeText(body)
@@ -431,7 +441,7 @@ object EngineConfig {
         // The overlay references the plugins by relative path, so the files must
         // sit beside it. Deploy from assets (kept in sync by the same idempotent check).
         runCatching {
-            listOf("priv-mode.mjs", "bridge-token.mjs").forEach { fileName ->
+                listOf("priv-mode.mjs", "bridge-token.mjs", "shz-port.mjs", "permission-mode.mjs").forEach { fileName ->
                 val src = ctx.assets.open("android-plugins/$fileName").use { it.readBytes() }
                 val dst = File(f.parentFile, "android-plugins/$fileName")
                 dst.parentFile?.mkdirs()
